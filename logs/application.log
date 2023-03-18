@@ -1,0 +1,77 @@
+22-08-2021 22:01:22.923 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 13.0.1 on Vulcan with PID 18556 (D:\Git Projects\ELK Logs Monitoring\ELK\target\classes started by ApoorvTyagi in D:\Git Projects\ELK Logs Monitoring\ELK)
+22-08-2021 22:01:22.927 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+22-08-2021 22:01:25.233 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 2.868 seconds (JVM running for 11.729)
+22-08-2021 22:02:50.498 [http-nio-8080-exec-3] INFO  c.demo.ELK.controller.ELKController.helloWorld - Inside Hello World Function
+22-08-2021 22:02:50.501 [http-nio-8080-exec-3] INFO  c.demo.ELK.controller.ELKController.helloWorld - Response => Hello World! Sun Aug 22 22:02:50 IST 2021
+22-08-2021 22:02:56.001 [http-nio-8080-exec-4] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+22-08-2021 22:02:56.002 [http-nio-8080-exec-4] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+22-08-2021 22:06:53.971 [http-nio-8080-exec-10] INFO  c.demo.ELK.controller.ELKController.helloWorld - Inside Hello World Function
+22-08-2021 22:06:53.972 [http-nio-8080-exec-10] INFO  c.demo.ELK.controller.ELKController.helloWorld - Response => Hello World! Sun Aug 22 22:06:53 IST 2021
+22-08-2021 22:06:55.424 [http-nio-8080-exec-1] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+22-08-2021 22:06:55.425 [http-nio-8080-exec-1] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+22-08-2021 22:37:54.599 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 13.0.1 on Vulcan with PID 19788 (D:\Git Projects\ELK Logs Monitoring\ELK\target\classes started by ApoorvTyagi in D:\Git Projects\ELK Logs Monitoring\ELK)
+22-08-2021 22:37:54.602 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+22-08-2021 22:37:57.212 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 3.261 seconds (JVM running for 10.333)
+22-08-2021 22:38:03.738 [http-nio-8080-exec-2] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+22-08-2021 22:38:03.741 [http-nio-8080-exec-2] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+28-08-2021 20:31:11.103 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 13.0.1 on Vulcan with PID 17332 (D:\Git Projects\ELK Logs Monitoring\ELK\target\classes started by ApoorvTyagi in D:\Git Projects\ELK Logs Monitoring\ELK)
+28-08-2021 20:31:11.106 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-08-2021 20:31:12.770 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 2.229 seconds (JVM running for 2.573)
+28-08-2021 20:31:18.991 [http-nio-8080-exec-1] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+28-08-2021 20:31:18.993 [http-nio-8080-exec-1] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+28-08-2021 20:31:18.998 [http-nio-8080-exec-1] ERROR com.demo.ELK.services.ELKService.getAllFoodDetails - Error occurred in reading JSON file
+28-08-2021 20:33:16.244 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 13.0.1 on Vulcan with PID 19592 (D:\Git Projects\ELK Logs Monitoring\ELK\target\classes started by ApoorvTyagi in D:\Git Projects\ELK Logs Monitoring\ELK)
+28-08-2021 20:33:16.246 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-08-2021 20:33:17.596 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 1.669 seconds (JVM running for 1.941)
+28-08-2021 20:33:24.598 [http-nio-8080-exec-1] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+28-08-2021 20:33:24.600 [http-nio-8080-exec-1] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+28-08-2021 20:34:29.997 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 13.0.1 on Vulcan with PID 10512 (D:\Git Projects\ELK Logs Monitoring\ELK\target\classes started by ApoorvTyagi in D:\Git Projects\ELK Logs Monitoring\ELK)
+28-08-2021 20:34:29.999 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-08-2021 20:34:31.418 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 1.784 seconds (JVM running for 2.107)
+28-08-2021 20:34:34.319 [http-nio-8080-exec-5] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+28-08-2021 20:34:34.320 [http-nio-8080-exec-5] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+28-08-2021 20:36:29.351 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 13.0.1 on Vulcan with PID 20776 (D:\Git Projects\ELK Logs Monitoring\ELK\target\classes started by ApoorvTyagi in D:\Git Projects\ELK Logs Monitoring\ELK)
+28-08-2021 20:36:29.353 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-08-2021 20:36:30.725 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 1.703 seconds (JVM running for 1.969)
+28-08-2021 20:36:35.845 [http-nio-8080-exec-2] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+28-08-2021 20:36:35.847 [http-nio-8080-exec-2] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 15:03:11.824 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 11.0.14 on Shradhas-MacBook-Pro.local with PID 48263 (/Users/shradhayewale/295B/Spring-ELK-main/target/classes started by shradhayewale in /Users/shradhayewale/295B/Spring-ELK-main)
+26-02-2023 15:03:11.837 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+26-02-2023 15:03:13.978 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 2.885 seconds (JVM running for 4.2)
+26-02-2023 15:05:24.947 [http-nio-8080-exec-8] INFO  c.demo.ELK.controller.ELKController.helloWorld - Inside Hello World Function
+26-02-2023 15:05:24.972 [http-nio-8080-exec-8] INFO  c.demo.ELK.controller.ELKController.helloWorld - Response => Hello World! Sun Feb 26 15:05:24 PST 2023
+26-02-2023 15:05:37.375 [http-nio-8080-exec-9] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 15:05:37.377 [http-nio-8080-exec-9] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 15:16:20.093 [http-nio-8080-exec-2] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 15:16:20.104 [http-nio-8080-exec-2] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 15:16:44.525 [http-nio-8080-exec-4] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 15:16:44.528 [http-nio-8080-exec-4] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 15:18:02.183 [http-nio-8080-exec-6] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 15:18:02.188 [http-nio-8080-exec-6] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 16:10:23.199 [http-nio-8080-exec-8] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 16:10:23.218 [http-nio-8080-exec-8] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 17:29:31.915 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 11.0.14 on Shradhas-MacBook-Pro.local with PID 59729 (/Users/shradhayewale/295B/Spring-ELK-main/target/classes started by shradhayewale in /Users/shradhayewale/295B/Spring-ELK-main)
+26-02-2023 17:29:31.920 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+26-02-2023 17:29:34.435 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 3.183 seconds (JVM running for 5.245)
+26-02-2023 17:29:43.127 [http-nio-8080-exec-1] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 17:29:43.502 [http-nio-8080-exec-1] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 17:32:29.548 [http-nio-8080-exec-5] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 17:32:29.577 [http-nio-8080-exec-5] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 17:38:32.811 [http-nio-8080-exec-8] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 17:38:32.960 [http-nio-8080-exec-8] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 17:53:27.812 [http-nio-8080-exec-10] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 17:53:27.864 [http-nio-8080-exec-10] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 22:14:47.463 [http-nio-8080-exec-4] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 22:14:47.477 [http-nio-8080-exec-4] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+26-02-2023 22:20:15.195 [http-nio-8080-exec-7] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+26-02-2023 22:20:15.215 [http-nio-8080-exec-7] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+28-02-2023 16:16:37.139 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 11.0.14 on Shradhas-MacBook-Pro.local with PID 1506 (/Users/shradhayewale/295B/Spring-ELK-main/target/classes started by shradhayewale in /Users/shradhayewale/295B/Spring-ELK-main)
+28-02-2023 16:16:37.145 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+28-02-2023 16:16:39.127 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 2.728 seconds (JVM running for 3.848)
+28-02-2023 16:16:43.479 [http-nio-8080-exec-1] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+28-02-2023 16:16:43.480 [http-nio-8080-exec-1] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+28-02-2023 16:43:08.791 [http-nio-8080-exec-5] INFO  c.demo.ELK.controller.ELKController.foodDetails - Inside Food Detail Function
+28-02-2023 16:43:08.795 [http-nio-8080-exec-5] INFO  com.demo.ELK.services.ELKService.getAllFoodDetails - Fetching ALL food details...
+18-03-2023 13:15:16.536 [main] INFO  com.demo.ELK.ElkApplication.logStarting - Starting ElkApplication using Java 11.0.14 on Shradhas-MacBook-Pro.local with PID 13392 (/Users/shradhayewale/295B/Spring-ELK-main/target/classes started by shradhayewale in /Users/shradhayewale/295B/Spring-ELK-main)
+18-03-2023 13:15:16.540 [main] INFO  com.demo.ELK.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+18-03-2023 13:15:18.011 [main] INFO  com.demo.ELK.ElkApplication.logStarted - Started ElkApplication in 2.055 seconds (JVM running for 3.551)
