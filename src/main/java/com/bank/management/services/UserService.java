@@ -137,7 +137,6 @@ public class UserService {
     }
 
 
-
     public Object deleteUser(Long id)  {
         log.info("Inside delete user...");
         try {
