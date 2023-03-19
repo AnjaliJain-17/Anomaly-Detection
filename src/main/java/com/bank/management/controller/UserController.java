@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Long id) throws Exception {
+    public Optional<User> getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
@@ -30,15 +30,14 @@ public class UserController {
         return userService.createUser(user);
     }
 
-//
-//    @PutMapping("/{id}")
-//    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-//        return userService.updateUser(id, user);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteUser(@PathVariable Long id) {
-//        userService.deleteUser(id);
-//    }
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
+
+    @DeleteMapping("/{id}")
+    public Object deleteUser(@PathVariable Long id) {
+        return userService.deleteUser(id);
+    }
 }
 

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +43,7 @@ public class UserService {
             userDetails = (JSONArray) jsonObject.get("data");
 
         } catch (IOException | ParseException e) {
-            log.error("Error occurred in reading JSON file");
+            log.error("Error occurred in reading JSON file... => {}", e.getMessage());
             e.printStackTrace();
         }
         return userDetails;
@@ -67,13 +68,14 @@ public class UserService {
             log.info("User not found with id {}", id);
             return Optional.empty();
         } catch (IOException e) {
-            log.error("Error occurred in fetching user details for user id");
+            log.error("Error occurred in fetching user details for user id... => {}", e.getMessage());
             e.printStackTrace();
         }
         return Optional.empty();
     }
 
     public User createUser(User user) {
+        log.info("Inside create user...");
         try {
             // Read the existing JSON data from the file into a JsonNode tree model
             JsonNode rootNode = mapper.readTree(new File("user.json"));
@@ -91,29 +93,82 @@ public class UserService {
             mapper.writeValue(new File("user.json"), rootNode);
 
         } catch (Exception e) {
-            log.error("Error occurred while creating user");
+            log.error("Error occurred while creating user... => {}", e.getMessage());
             e.printStackTrace();
         }
         return user;
     }
 
-//
-//    public User updateUser(Long id, User user) throws Exception {
-//        Optional<User> optionalUser = userRepository.findById(id);
-//        if (optionalUser.isPresent()) {
-//            user.setId(id);
-//            return userRepository.save(user);
-//        } else {
-//            throw new Exception("User not found with id " + id);
-//        }
-//    }
-//
-//    public void deleteUser(Long id) throws Exception {
-//        Optional<User> optionalUser = userRepository.findById(id);
-//        if (optionalUser.isPresent()) {
-//            userRepository.deleteById(id);
-//        } else {
-//            throw new Exception("User not found with id " + id);
-//        }
-//    }
+
+    public User updateUser(Long id, User user) {
+        log.info("Inside update user...");
+        try {
+            // Read user.json file
+            JSONParser parser = new JSONParser();
+            File file = new File("user.json");
+            Object obj = parser.parse(new FileReader(file));
+
+            // Get the user object with the given ID and update it
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray jsonArray = (JSONArray) jsonObject.get("data");
+
+            for (Object o : jsonArray) {
+                JSONObject userObj = (JSONObject) o;
+                if ((long) userObj.get("id") == id) {
+                    userObj.put("firstName", user.getFirstName());
+                    userObj.put("lastName", user.getLastName());
+                    userObj.put("email", user.getEmail());
+                    userObj.put("password", user.getPassword());
+                    break;
+                }
+            }
+
+            // Write the updated user.json file
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(jsonObject.toJSONString());
+            fileWriter.flush();
+            fileWriter.close();
+            log.info("User object with ID " + id + " has been updated successfully.");
+        } catch (Exception e) {
+            log.error("Error occurred while update user... => {}", e.getMessage());
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+
+
+    public Object deleteUser(Long id)  {
+        log.info("Inside delete user...");
+        try {
+            // Read the contents of the user.json file
+            FileReader fileReader = new FileReader("user.json");
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
+            JSONArray jsonArray = (JSONArray) jsonObject.get("data");
+
+            // Remove the user object with the specified ID
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JSONObject userObject = (JSONObject) jsonArray.get(i);
+                int userId = ((Long) userObject.get("id")).intValue();
+                if (userId == id) {
+                    jsonArray.remove(i);
+                    break;
+                }
+            }
+
+            // Write the updated JSON data to the user.json file
+            FileWriter fileWriter = new FileWriter("user.json");
+            fileWriter.write(jsonObject.toJSONString());
+            fileWriter.flush();
+            fileWriter.close();
+
+            log.info("User with ID " + id + " deleted successfully.");
+            return "user deleted successfully!";
+        } catch (Exception e) {
+            log.error("Error occurred while delete user... => {}", e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
