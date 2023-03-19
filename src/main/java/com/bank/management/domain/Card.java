@@ -4,7 +4,7 @@ public class Card {
     private Long id;
     private String cardNumber;
     private String expirationDate;
-    private String cvv;
+    private String cardHolderName;
     private Long userId;
     // getters and setters
 
@@ -33,12 +33,12 @@ public class Card {
         this.expirationDate = expirationDate;
     }
 
-    public String getCvv() {
-        return cvv;
+    public String getCardHolderName() {
+        return cardHolderName;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
+    public void setCardHolderName(String cardHolderName) {
+        this.cardHolderName = cardHolderName;
     }
 
     public Long getUserId() {
