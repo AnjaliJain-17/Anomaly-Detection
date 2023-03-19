@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "cardNumber": "1234567890123456",
+    "expirationDate": "12/24",
+    "cardHolderName": "John Doe",
+    "userId": 1
+  },
+  {
+    "id": 2,
+    "cardNumber": "2345678901234567",
+    "expirationDate": "01/23",
+    "cardHolderName": "Jane Doe",
+    "userId": 2
+  },
+  {
+    "id": 3,
+    "cardNumber": "3456789012345678",
+    "expirationDate": "03/25",
+    "cardHolderName": "Bob Smith",
+    "userId": 3
+  },
+  {
+    "id": 4,
+    "cardNumber": "4567890123456789",
+    "expirationDate": "06/23",
+    "cardHolderName": "Alice Johnson",
+    "userId": 4
+  },
+  {
+    "id": 5,
+    "cardNumber": "5678901234567890",
+    "expirationDate": "09/24",
+    "cardHolderName": "Michael Brown",
+    "userId": 5
+  },
+  {
+    "id": 6,
+    "cardNumber": "6789012345678901",
+    "expirationDate": "11/25",
+    "cardHolderName": "Emily Davis",
+    "userId": 6
+  },
+  {
+    "id": 7,
+    "cardNumber": "7890123456789012",
+    "expirationDate": "02/23",
+    "cardHolderName": "David Wilson",
+    "userId": 7
+  },
+  {
+    "id": 8,
+    "cardNumber": "8901234567890123",
+    "expirationDate": "08/23",
+    "cardHolderName": "Sophia Garcia",
+    "userId": 8
+  },
+  {
+    "id": 9,
+    "cardNumber": "9012345678901234",
+    "expirationDate": "05/25",
+    "cardHolderName": "Daniel Martinez",
+    "userId": 9
+  },
+  {
+    "id": 10,
+    "cardNumber": "0123456789012345",
+    "expirationDate": "10/24",
+    "cardHolderName": "Olivia Hernandez",
+    "userId": 10
+  }
+]
