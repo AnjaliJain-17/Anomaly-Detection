@@ -4,7 +4,9 @@ public class Payment {
     private Long id;
     private Long cardId;
     private Double amount;
-    private String description;
+    private String currency;
+    private String status;
+    private String timestamp;
     // getters and setters
 
 
@@ -32,12 +34,28 @@ public class Payment {
         this.amount = amount;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }
 
