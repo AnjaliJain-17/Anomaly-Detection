@@ -34,3 +34,5 @@ build/
 
 ELK Stack
 .mvn
+
+HDFS.log
