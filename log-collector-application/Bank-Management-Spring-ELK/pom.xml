@@ -55,18 +55,18 @@
 	</dependencies>
 
 
-	<!--	<build>-->
-	<!--		<plugins>-->
-	<!--			&lt;!&ndash; Add the Spring Boot Maven plugin configuration &ndash;&gt;-->
-	<!--			<plugin>-->
-	<!--				<groupId>org.springframework.boot</groupId>-->
-	<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-	<!--				<configuration>-->
-	<!--					<mainClass>com.bank.management.ElkApplication</mainClass>-->
-	<!--				</configuration>-->
-	<!--			</plugin>-->
-	<!--		</plugins>-->
-	<!--	</build>-->
+<!--		<build>-->
+<!--			<plugins>-->
+<!--				&lt;!&ndash; Add the Spring Boot Maven plugin configuration &ndash;&gt;-->
+<!--				<plugin>-->
+<!--					<groupId>org.springframework.boot</groupId>-->
+<!--					<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--					<configuration>-->
+<!--						<mainClass>com.bank.management.ElkApplication</mainClass>-->
+<!--					</configuration>-->
+<!--				</plugin>-->
+<!--			</plugins>-->
+<!--		</build>-->
 
 <!--	<build>-->
 <!--		<plugins>-->
@@ -106,16 +106,10 @@
 	<build>
 		<plugins>
 			<plugin>
-				<!-- Build an executable JAR -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.0</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.bank.management.ElkApplication</mainClass>
-						</manifest>
-					</archive>
+					<mainClass>com.bank.management.ElkApplication</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
