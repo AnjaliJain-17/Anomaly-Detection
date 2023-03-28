@@ -11,7 +11,7 @@
 	<groupId>com.bank.management</groupId>
 	<artifactId>ElkApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ELK</name>
+	<name>ElkApplication</name>
 	<description>Bank Management logs monitoring and aggregation using ELK stack</description>
 	<properties>
 		<java.version>11</java.version>
@@ -55,14 +55,33 @@
 	</dependencies>
 
 
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			&lt;!&ndash; Add the Spring Boot Maven plugin configuration &ndash;&gt;-->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<mainClass>com.bank.management.ElkApplication</mainClass>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
 	<build>
 		<plugins>
-			<!-- Add the Spring Boot Maven plugin configuration -->
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
 				<configuration>
-					<mainClass>com.bank.management.ElkApplication</mainClass>
+					<archive>
+						<manifest>
+							<!-- <addClasspath>true</addClasspath> -->
+							<mainClass>com.bank.management.ElkApplication</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
