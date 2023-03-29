@@ -1,0 +1,15 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.3)
+
+29-03-2023 01:14:04.158 [35m[main][0;39m [34mINFO [0;39m com.bank.management.ElkApplication.logStarting - Starting ElkApplication v0.0.1-SNAPSHOT using Java 11.0.18 on ip-172-31-3-241 with PID 13842 (/home/ubuntu/Anomaly-Detection/Bank-Management-Spring-ELK/target/ElkApplication-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/Anomaly-Detection/Bank-Management-Spring-ELK)
+29-03-2023 01:14:04.301 [35m[main][0;39m [34mINFO [0;39m com.bank.management.ElkApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+29-03-2023 01:14:23.189 [35m[main][0;39m [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+29-03-2023 01:14:24.415 [35m[main][0;39m [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 18746 ms
+29-03-2023 01:14:33.370 [35m[main][0;39m [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path ''
+29-03-2023 01:14:33.497 [35m[main][0;39m [34mINFO [0;39m com.bank.management.ElkApplication.logStarted - Started ElkApplication in 39.468 seconds (JVM running for 46.874)
