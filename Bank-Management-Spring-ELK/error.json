@@ -1,0 +1,5 @@
+{
+    "cards":["Invalid Credit Card Number","Expired Credit Card","Insufficient Funds","Declined Transaction","Duplicate Transaction","Card Security Code Mismatch","Address Verification Failure"],
+    "payments":["Invalid Payment Method","Invalid Payment Details","Payment Reversed","Duplicate Payment","Payment Processor Error","Insufficient Funds","Payment Gateway Timeout"],
+    "user":["User not found","Duplicate user","Email verification failure","Account lockout"]
+}

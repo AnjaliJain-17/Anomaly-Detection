@@ -14,11 +14,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class CardService {
@@ -169,5 +172,31 @@ public class CardService {
         }
         return null;
     }
+
+
+    public List<String> generateError(int count, String type) throws IOException, ParseException  {
+        List<String> generatedExceptions = new ArrayList<>();
+        FileReader fileReader = new FileReader("error.json");
+        JSONParser jsonParser = new JSONParser();
+        JSONObject errorObj = (JSONObject) jsonParser.parse(fileReader);
+        List<String> cardExceptions = (List<String>) errorObj.get("cards");
+        int maxLength  = cardExceptions.size();
+        Random random = new Random();
+        int randomIdx = random.nextInt(maxLength);
+        Exception e = null;
+        for(int i=0; i<count;i++){
+         
+            if(type.equalsIgnoreCase("random")){
+                randomIdx = random.nextInt(maxLength);
+            }
+            
+            e = new Exception(cardExceptions.get(randomIdx));
+            generatedExceptions.add(e.getMessage());
+            log.error("Error: ", e);
+            
+        }
+        return generatedExceptions;
+    }
+        
 
 }
