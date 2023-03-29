@@ -22,7 +22,7 @@ endpoints_anomaly = [
   ]
   
 
-WINDOW_TIME = 120 # n seconds 
+WINDOW_TIME = 600 # n seconds 
 
 fake = Faker()
 
@@ -117,10 +117,15 @@ def generate_anomalous_window_logs():
     print("Finished executing code for 10 minutes.") 
 
 
-while True:
+# Define the start time
+start_time = time.time()
+
+# Run the program for 2 hours
+while (time.time() - start_time) < (2 * 60 * 60):
     if random.random() < 0.9:
-        generate_normal_window_logs()
+        generate_anomalous_window_logs()
     else:
         generate_anomalous_window_logs()
     time.sleep(3)
 
+print("Program has finished running for 2 hours", time.time())

@@ -1,0 +1,11 @@
+EventId,EventTemplate,Occurrences
+d73f95b5,/home/ubuntu/Anomaly-Detection/Bank-Management-Spring-ELK/card.json,1323
+b23d1fae,Inside <*> card...,3948
+94ca10d1,Card object with ID <*> has been updated successfully.,1324
+f6b586ef,Card with ID <*> deleted successfully.,1302
+c0731fc8,Fetching ALL card details...,1322
+81f0209d,Fetching card details for card id...,1356
+e9469db0,Card details found: <*>,1132
+54637d32,Card details not found with id <*>,224
+80abedaf,Error parsing HTTP request header,1
+3d9f514d,Error:,589
