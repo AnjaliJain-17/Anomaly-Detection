@@ -1,0 +1,24 @@
+EventId,EventTemplate,Occurrences
+b2c05d68,Starting ElkApplication v0.<*>.<*>-SNAPSHOT using Java <*>.<*>.<*> on ip-<*>-<*>-<*>-<*> with PID <*> (/home/ubuntu/Anomaly-Detection/Bank-Management-Spring-ELK/target/ElkApplication-<*>.<*>.<*>-SNAPSHOT.jar started by ubuntu in /home/ubuntu/Anomaly-Detection/Bank-Management-Spring-ELK)\,1
+0d0355b4,"No active profile set, falling back to default profiles: default\",1
+3535c482,Tomcat initialized with port(s): <*> (http)\,1
+a0c3ac0e,"Initializing ProtocolHandler [""http-nio-<*>""]\",1
+cadfeb81,Starting service [Tomcat]\,1
+aa6199ad,Starting Servlet engine: [Apache Tomcat/<*>.<*>.<*>]\,1
+096b6230,Initializing Spring <*> <*>,2
+dd61c1b1,Root WebApplicationContext: initialization completed in <*> ms\,1
+90ef8ad5,"Starting ProtocolHandler [""http-nio-<*>""]\",1
+435c264d,Tomcat started on port(s): <*> (http) with context path ''\,1
+7219f0e4,Started ElkApplication in <*>.<*> seconds (JVM running for <*>.<*>)\,1
+ac635d15,Initializing Servlet 'dispatcherServlet'\,1
+ef348ae9,Completed initialization in <*> ms\,1
+e84b414a,Fetching ALL <*> details...\,309
+deec0f0e,/home/ubuntu/Anomaly-Detection/Bank-Management-Spring-ELK/card.json\,303
+d4260df9,Fetching <*> details for <*> id...\,11
+e9469db0,Card details found: <*>,5
+4ca50db4,User found: <*>,6
+a97f8d99,Fetching payment details by id...\,5
+c4a0945f,Payment details found: <*>,5
+a1404f2b,Inside Hello World Function\,2
+3f7fe44b,Response => Hello World! Wed Mar <*> <*>:<*>:<*> UTC <*>\,2
+7e78fdb9,Error parsing HTTP request header\,1
