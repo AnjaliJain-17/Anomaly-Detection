@@ -21,6 +21,10 @@
         <appender-ref ref="SAVE-TO-FILE" />
         <appender-ref ref="STDOUT" />
     </logger>
+    <logger name="com.bank.management" additivity="false" level="error">
+        <appender-ref ref="SAVE-TO-FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
     <logger name="outbound-logs" additivity="false" level="info">
         <appender-ref ref="OUTBOUND_LOGS" />
         <appender-ref ref="STDOUT" />

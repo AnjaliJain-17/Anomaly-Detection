@@ -41,8 +41,8 @@ public class UserService {
             Object obj = parser.parse(new FileReader("user.json"));
             JSONObject jsonObject = (JSONObject) obj;
             userDetails = (JSONArray) jsonObject.get("data");
-
-        } catch (IOException | ParseException e) {
+            log.info("Get all users details response.... => {}", userDetails);
+        } catch (Exception e) {
             log.error("Error occurred in reading JSON file... => {}", e.getMessage());
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class UserService {
             }
             log.info("User not found with id {}", id);
             return Optional.empty();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("Error occurred in fetching user details for user id... => {}", e.getMessage());
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class UserService {
 
             // Write the updated tree back to the file
             mapper.writeValue(new File("user.json"), rootNode);
-
+            log.info("user created successfully!");
         } catch (Exception e) {
             log.error("Error occurred while creating user... => {}", e.getMessage());
             e.printStackTrace();
