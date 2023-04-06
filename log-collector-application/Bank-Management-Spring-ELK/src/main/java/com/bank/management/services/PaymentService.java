@@ -1,6 +1,5 @@
 package com.bank.management.services;
 
-import com.bank.management.domain.Card;
 import com.bank.management.domain.Payment;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,8 +37,9 @@ public class PaymentService {
             Object obj = parser.parse(new FileReader("payment.json"));
             JSONObject jsonObject = (JSONObject) obj;
             paymentDetails = (JSONArray) jsonObject.get("data");
+            log.info("Get all payment details response.... => {}", paymentDetails);
 
-        } catch (IOException | ParseException e) {
+        } catch (Exception e) {
             log.error("Error occurred in fetching all payment details... => {}", e.getMessage());
             e.printStackTrace();
         }
@@ -66,7 +64,7 @@ public class PaymentService {
             }
             log.info("Payment details not found with id {}", id);
             return Optional.empty();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("Error occurred in fetching payment details for id... => {}", e.getMessage());
             e.printStackTrace();
         }
@@ -90,6 +88,7 @@ public class PaymentService {
 
             // Write the updated tree back to the file
             mapper.writeValue(new File("payment.json"), rootNode);
+            log.info("payment created successfully!");
 
         } catch (Exception e) {
             log.error("Error occurred while creating payment... => {}", e.getMessage());
