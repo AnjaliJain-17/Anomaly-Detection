@@ -40,7 +40,7 @@ public class CardService {
             Object obj = parser.parse(new FileReader("card.json"));
             JSONObject jsonObject = (JSONObject) obj;
             cardDetails = (JSONArray) jsonObject.get("data");
-
+            log.info("Get all cards details response.... => {}", cardDetails);
         } catch (Exception e) {
             log.error("Error occurred in fetching all cards details... => {}", e.getMessage());
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class CardService {
             }
             log.info("Card details not found with id {}", id);
             return Optional.empty();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("Error occurred in fetching card details for card id... => {}", e.getMessage());
             e.printStackTrace();
         }
@@ -90,6 +90,7 @@ public class CardService {
 
             // Write the updated tree back to the file
             mapper.writeValue(new File("card.json"), rootNode);
+            log.info("card created successfully!");
 
         } catch (Exception e) {
             log.error("Error occurred while creating card... => {}", e.getMessage());
