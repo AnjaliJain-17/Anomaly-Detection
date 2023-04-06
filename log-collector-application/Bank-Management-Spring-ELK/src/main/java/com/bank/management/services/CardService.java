@@ -41,7 +41,7 @@ public class CardService {
             JSONObject jsonObject = (JSONObject) obj;
             cardDetails = (JSONArray) jsonObject.get("data");
 
-        } catch (IOException | ParseException e) {
+        } catch (Exception e) {
             log.error("Error occurred in fetching all cards details... => {}", e.getMessage());
             e.printStackTrace();
         }
