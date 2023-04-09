@@ -45,6 +45,23 @@ public class CardService {
         return cardDetails;
     }
 
+    public List<Card> getAllCardsErrorResponse() {
+
+        log.info("Fetching ALL card details...");
+        JSONArray cardDetails = new JSONArray();
+        try {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader("card1.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            cardDetails = (JSONArray) jsonObject.get("data");
+            log.info("Get all cards details response.... => {}", cardDetails);
+        } catch (Exception e) {
+            log.error("Error occurred in fetching all cards details... => {}", e.getMessage());
+            e.printStackTrace();
+        }
+        return cardDetails;
+    }
+
     public Optional<Card> getCardById(Long id) {
         log.info("Fetching card details for card id...");
         try {

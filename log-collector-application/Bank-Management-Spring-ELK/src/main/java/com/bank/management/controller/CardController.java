@@ -26,6 +26,12 @@ public class CardController {
         return cardService.getAllCards();
     }
 
+    @GetMapping("/error")
+    public List<Card> getAllCardsErrorResponse() {
+        log.info("Inside getAllCards Error Controller");
+        return cardService.getAllCardsErrorResponse();
+    }
+
     @GetMapping("/{id}")
     public Optional<Card> getCardById(@PathVariable Long id) {
         log.info("Inside getCardById Controller");

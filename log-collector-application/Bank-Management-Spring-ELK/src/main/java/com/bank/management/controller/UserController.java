@@ -25,6 +25,12 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/error")
+    public List<User> getAllUsersErrorResponse() {
+        log.info("Inside getAllUsers Controller");
+        return userService.getAllUsersErrorResponse();
+    }
+
     @GetMapping("/{id}")
     public Optional<User> getUserById(@PathVariable Long id) {
         log.info("Inside getUserById Controller");

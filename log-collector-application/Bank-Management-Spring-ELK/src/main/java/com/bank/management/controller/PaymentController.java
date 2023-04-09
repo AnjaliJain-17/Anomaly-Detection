@@ -25,6 +25,12 @@ public class PaymentController {
         return paymentService.getAllPayments();
     }
 
+    @GetMapping("/error")
+    public List<Payment> getAllPaymentsErrorResponse() {
+        log.info("Inside getAllPayments Controller");
+        return paymentService.getAllPaymentsErrorResponse();
+    }
+
     @GetMapping("/{id}")
     public Optional<Payment> getPaymentById(@PathVariable Long id) {
         log.info("Inside getPaymentById Controller");

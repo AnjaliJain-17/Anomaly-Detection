@@ -44,6 +44,22 @@ public class UserService {
         return userDetails;
     }
 
+    public List<User> getAllUsersErrorResponse() {
+        log.info("Fetching ALL user details...");
+        JSONArray userDetails = new JSONArray();
+        try {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader("user1.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            userDetails = (JSONArray) jsonObject.get("data");
+            log.info("Get all users details response.... => {}", userDetails);
+        } catch (Exception e) {
+            log.error("Error occurred in reading JSON file... => {}", e.getMessage());
+            e.printStackTrace();
+        }
+        return userDetails;
+    }
+
     public Optional<User> getUserById(Long id) {
         log.info("Fetching user details for user id...");
         try {

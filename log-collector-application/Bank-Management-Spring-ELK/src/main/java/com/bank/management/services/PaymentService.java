@@ -46,6 +46,24 @@ public class PaymentService {
         return paymentDetails;
     }
 
+    public List<Payment> getAllPaymentsErrorResponse() {
+
+        log.info("Fetching ALL payment details...");
+        JSONArray paymentDetails = new JSONArray();
+        try {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader("payment1.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            paymentDetails = (JSONArray) jsonObject.get("data");
+            log.info("Get all payment details response.... => {}", paymentDetails);
+
+        } catch (Exception e) {
+            log.error("Error occurred in fetching all payment details... => {}", e.getMessage());
+            e.printStackTrace();
+        }
+        return paymentDetails;
+    }
+
     public Optional<Payment> getPaymentById(Long id) {
         log.info("Fetching payment details by id...");
         try {
