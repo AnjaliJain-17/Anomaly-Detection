@@ -9,6 +9,9 @@ sudo systemctl start logstash
 # Start Kibana
 sudo systemctl start kibana
 
+#Go to home directory
+cd
+
 # Change to the directory where your Spring Boot application is located
 cd Anomaly-Detection/log-collector-application/Bank-Management-Spring-ELK/
 
