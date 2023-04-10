@@ -2,6 +2,7 @@ Command to execute the startup script that starts the ElasticSearch, Logstash an
 ./start_elk.sh
 
 Check if the services are up and running:
+
 sudo systemctl status elasticsearch
 sudo systemctl status logstash
 sudo systemctl status kibana
