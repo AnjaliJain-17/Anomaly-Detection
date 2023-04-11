@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -24,6 +25,9 @@ public class PaymentService {
 
     private final ObjectMapper mapper;
 
+    @Value("${file.path}")
+    private String filePath;
+
     public PaymentService(ObjectMapper mapper) {
         this.mapper = mapper;
     }
@@ -34,7 +38,7 @@ public class PaymentService {
         JSONArray paymentDetails = new JSONArray();
         try {
             JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("payment.json"));
+            Object obj = parser.parse(new FileReader(filePath+"payment.json"));
             JSONObject jsonObject = (JSONObject) obj;
             paymentDetails = (JSONArray) jsonObject.get("data");
             log.info("Get all payment details response.... => {}", paymentDetails);
@@ -67,7 +71,7 @@ public class PaymentService {
     public Optional<Payment> getPaymentById(Long id) {
         log.info("Fetching payment details by id...");
         try {
-            File file = new File("payment.json");
+            File file = new File(filePath+"payment.json");
             JsonNode rootNode = mapper.readTree(file);
 
             JsonNode dataArray = rootNode.path("data");
@@ -93,7 +97,7 @@ public class PaymentService {
         log.info("Inside create payment...");
         try {
             // Read the existing JSON data from the file into a JsonNode tree model
-            JsonNode rootNode = mapper.readTree(new File("payment.json"));
+            JsonNode rootNode = mapper.readTree(new File(filePath+"payment.json"));
 
             // Get the "data" array node from the tree
             ArrayNode dataArray = (ArrayNode) rootNode.get("data");
@@ -105,7 +109,7 @@ public class PaymentService {
             dataArray.add(userNode);
 
             // Write the updated tree back to the file
-            mapper.writeValue(new File("payment.json"), rootNode);
+            mapper.writeValue(new File(filePath+"payment.json"), rootNode);
             log.info("payment created successfully!");
 
         } catch (Exception e) {
@@ -120,7 +124,7 @@ public class PaymentService {
         try {
             // Read user.json file
             JSONParser parser = new JSONParser();
-            File file = new File("payment.json");
+            File file = new File(filePath+"payment.json");
             Object obj = parser.parse(new FileReader(file));
 
             // Get the user object with the given ID and update it
@@ -156,7 +160,7 @@ public class PaymentService {
         log.info("Inside delete payment...");
         try {
             // Read the contents of the user.json file
-            FileReader fileReader = new FileReader("payment.json");
+            FileReader fileReader = new FileReader(filePath+"payment.json");
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
             JSONArray jsonArray = (JSONArray) jsonObject.get("data");
@@ -172,7 +176,7 @@ public class PaymentService {
             }
 
             // Write the updated JSON data to the user.json file
-            FileWriter fileWriter = new FileWriter("payment.json");
+            FileWriter fileWriter = new FileWriter(filePath+"payment.json");
             fileWriter.write(jsonObject.toJSONString());
             fileWriter.flush();
             fileWriter.close();

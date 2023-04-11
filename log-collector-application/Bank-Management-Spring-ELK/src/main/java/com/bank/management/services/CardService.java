@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -24,6 +25,9 @@ public class CardService {
 
     private final ObjectMapper mapper;
 
+    @Value("${file.path}")
+    private String filePath;
+
     public CardService(ObjectMapper mapper) {
         this.mapper = mapper;
     }
@@ -34,7 +38,7 @@ public class CardService {
         JSONArray cardDetails = new JSONArray();
         try {
             JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("card.json"));
+            Object obj = parser.parse(new FileReader(filePath+"card.json"));
             JSONObject jsonObject = (JSONObject) obj;
             cardDetails = (JSONArray) jsonObject.get("data");
             log.info("Get all cards details response.... => {}", cardDetails);
@@ -51,7 +55,7 @@ public class CardService {
         JSONArray cardDetails = new JSONArray();
         try {
             JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("card1.json"));
+            Object obj = parser.parse(new FileReader(filePath+"card1.json"));
             JSONObject jsonObject = (JSONObject) obj;
             cardDetails = (JSONArray) jsonObject.get("data");
             log.info("Get all cards details response.... => {}", cardDetails);
@@ -65,7 +69,7 @@ public class CardService {
     public Optional<Card> getCardById(Long id) {
         log.info("Fetching card details for card id...");
         try {
-            File file = new File("card.json");
+            File file = new File(filePath+"card.json");
             JsonNode rootNode = mapper.readTree(file);
 
             JsonNode dataArray = rootNode.path("data");
@@ -91,7 +95,7 @@ public class CardService {
         log.info("Inside create card...");
         try {
             // Read the existing JSON data from the file into a JsonNode tree model
-            JsonNode rootNode = mapper.readTree(new File("card.json"));
+            JsonNode rootNode = mapper.readTree(new File(filePath+"card.json"));
 
             // Get the "data" array node from the tree
             ArrayNode dataArray = (ArrayNode) rootNode.get("data");
@@ -103,7 +107,7 @@ public class CardService {
             dataArray.add(userNode);
 
             // Write the updated tree back to the file
-            mapper.writeValue(new File("card.json"), rootNode);
+            mapper.writeValue(new File(filePath+"card.json"), rootNode);
             log.info("card created successfully!");
 
         } catch (Exception e) {
@@ -118,7 +122,7 @@ public class CardService {
         try {
             // Read user.json file
             JSONParser parser = new JSONParser();
-            File file = new File("card.json");
+            File file = new File(filePath+"card.json");
             Object obj = parser.parse(new FileReader(file));
 
             // Get the user object with the given ID and update it
@@ -153,7 +157,7 @@ public class CardService {
         log.info("Inside delete card...");
         try {
             // Read the contents of the user.json file
-            FileReader fileReader = new FileReader("card.json");
+            FileReader fileReader = new FileReader(filePath+"card.json");
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
             JSONArray jsonArray = (JSONArray) jsonObject.get("data");
@@ -169,7 +173,7 @@ public class CardService {
             }
 
             // Write the updated JSON data to the user.json file
-            FileWriter fileWriter = new FileWriter("card.json");
+            FileWriter fileWriter = new FileWriter(filePath+"card.json");
             fileWriter.write(jsonObject.toJSONString());
             fileWriter.flush();
             fileWriter.close();

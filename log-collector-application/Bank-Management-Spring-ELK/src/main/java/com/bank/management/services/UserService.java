@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -24,6 +25,9 @@ public class UserService {
 
     private final ObjectMapper mapper;
 
+    @Value("${file.path}")
+    private String filePath;
+
     public UserService(ObjectMapper mapper) {
         this.mapper = mapper;
     }
@@ -33,7 +37,7 @@ public class UserService {
         JSONArray userDetails = new JSONArray();
         try {
             JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("user.json"));
+            Object obj = parser.parse(new FileReader(filePath+"user.json"));
             JSONObject jsonObject = (JSONObject) obj;
             userDetails = (JSONArray) jsonObject.get("data");
             log.info("Get all users details response.... => {}", userDetails);
@@ -63,7 +67,7 @@ public class UserService {
     public Optional<User> getUserById(Long id) {
         log.info("Fetching user details for user id...");
         try {
-            File file = new File("user.json");
+            File file = new File(filePath+"user.json");
             JsonNode rootNode = mapper.readTree(file);
 
             JsonNode dataArray = rootNode.path("data");
@@ -89,7 +93,7 @@ public class UserService {
         log.info("Inside create user...");
         try {
             // Read the existing JSON data from the file into a JsonNode tree model
-            JsonNode rootNode = mapper.readTree(new File("user.json"));
+            JsonNode rootNode = mapper.readTree(new File(filePath+"user.json"));
 
             // Get the "data" array node from the tree
             ArrayNode dataArray = (ArrayNode) rootNode.get("data");
@@ -101,7 +105,7 @@ public class UserService {
             dataArray.add(userNode);
 
             // Write the updated tree back to the file
-            mapper.writeValue(new File("user.json"), rootNode);
+            mapper.writeValue(new File(filePath+"user.json"), rootNode);
             log.info("user created successfully!");
         } catch (Exception e) {
             log.error("Error occurred while creating user... => {}", e.getMessage());
@@ -116,7 +120,7 @@ public class UserService {
         try {
             // Read user.json file
             JSONParser parser = new JSONParser();
-            File file = new File("user.json");
+            File file = new File(filePath+"user.json");
             Object obj = parser.parse(new FileReader(file));
 
             // Get the user object with the given ID and update it
@@ -152,7 +156,7 @@ public class UserService {
         log.info("Inside delete user...");
         try {
             // Read the contents of the user.json file
-            FileReader fileReader = new FileReader("user.json");
+            FileReader fileReader = new FileReader(filePath+"user.json");
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
             JSONArray jsonArray = (JSONArray) jsonObject.get("data");
@@ -168,7 +172,7 @@ public class UserService {
             }
 
             // Write the updated JSON data to the user.json file
-            FileWriter fileWriter = new FileWriter("user.json");
+            FileWriter fileWriter = new FileWriter(filePath+"user.json");
             fileWriter.write(jsonObject.toJSONString());
             fileWriter.flush();
             fileWriter.close();
