@@ -6,7 +6,7 @@ import time
 
 
 # Base URL for the Card API
-url = "http://ec2-54-151-57-38.us-west-1.compute.amazonaws.com:8080"
+url = "http://ec2-18-144-169-193.us-west-1.compute.amazonaws.com:8080"
 
 # Endpoint paths
 endpoints = [ 
