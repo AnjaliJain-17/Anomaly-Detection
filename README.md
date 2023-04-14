@@ -1,3 +1,5 @@
+# ELK start up script
+
 Navigate to the start-up script folder:
 
 cd Anomaly-Detection/start-up-script
@@ -21,3 +23,26 @@ sudo systemctl status logstash
 
 sudo systemctl status kibana
 
+# Commands 
+
+1. To create index on elastic search
+
+curl -XPUT -H 'Content-Type: application/json' http://localhost:9200/<index_name> -d '
+{
+  "mappings": {
+    "properties": {
+      "message": {
+        "type": "text"
+      },
+      "@timestamp": {
+        "type": "date"
+      }
+    }
+  }
+}'
+
+Replace index_name with the index name that you want to create
+
+2. To view all indexes 
+
+sudo curl -XGET 'localhost:9200/_cat/indices?v&pretty'
