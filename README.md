@@ -46,3 +46,9 @@ Replace index_name with the index name that you want to create
 2. To view all indexes 
 
 sudo curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+
+3. Kibana UI
+
+Change DNS as required
+
+http://ec2-13-57-247-5.us-west-1.compute.amazonaws.com:5601/app/discover#/
