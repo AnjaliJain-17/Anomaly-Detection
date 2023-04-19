@@ -194,7 +194,7 @@ public class CardService {
 
     public List<String> generateError(int count, String type) throws IOException, ParseException {
         List<String> generatedExceptions = new ArrayList<>();
-        FileReader fileReader = new FileReader("error.json");
+        FileReader fileReader = new FileReader(filePath+"error.json");
         JSONParser jsonParser = new JSONParser();
         JSONObject errorObj = (JSONObject) jsonParser.parse(fileReader);
         List<String> cardExceptions = (List<String>) errorObj.get("cards");
