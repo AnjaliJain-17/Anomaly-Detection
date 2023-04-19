@@ -73,7 +73,7 @@ def call_card_service(endpoint):
     elif method == "DELETE":
         response = requests.delete(full_url)
 
-    print(f"Request: {method} {full_url}{path} - Response status code: {response.status_code}")
+    print(f"Request: {method} {full_url} - Response status code: {response.status_code}")
 
 # Generate normal window logs for 10 mins
 def generate_normal_window_logs():
