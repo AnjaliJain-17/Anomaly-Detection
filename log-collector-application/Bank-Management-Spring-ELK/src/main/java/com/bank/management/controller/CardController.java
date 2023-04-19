@@ -4,9 +4,11 @@ import com.bank.management.domain.Card;
 import com.bank.management.services.CardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,5 +56,10 @@ public class CardController {
     public Object deleteCard(@PathVariable Long id) {
         log.info("Inside deleteCard Controller");
         return cardService.deleteCard(id);
+    }
+
+    @GetMapping("/error")
+    public List<String> getError(@RequestParam int count, @RequestParam(required = false) String type) throws IOException, ParseException {
+        return cardService.generateError(count,type);
     }
 }
