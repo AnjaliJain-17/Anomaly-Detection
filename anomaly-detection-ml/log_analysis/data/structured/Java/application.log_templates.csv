@@ -9,3 +9,6 @@ e9469db0,Card details found: <*>,1132
 54637d32,Card details not found with id <*>,224
 80abedaf,Error parsing HTTP request header,1
 3d9f514d,Error:,589
+1446c0e4,Starting ElkApplication v0.<*>.<*>-SNAPSHOT using Java <*>.<*>.<*> on ip-<*>-<*>-<*>-<*> with PID <*> (/home/ubuntu/Anomaly-Detection/log-collector-application/Bank-Management-Spring-ELK/target/ElkApplication-<*>.<*>.<*>-SNAPSHOT.jar started by ubuntu in /home/ubuntu/Anomaly-Detection/log-collector-application/Bank-Management-Spring-ELK/target),3
+44bf45f7,"No active profile set, falling back to default profiles: default",3
+e811627e,Started ElkApplication in <*>.<*> seconds (JVM running for <*>.<*>),3
