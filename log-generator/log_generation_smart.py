@@ -82,7 +82,7 @@ def generate_normal_window_logs():
     start_time = time.time()
     end_time = start_time + WINDOW_TIME  # 600 seconds = 10 minutes
     
-    print(f"Normal window: {start_time} {end_time}")
+    print(f"Normal window: {start_time.strftime('%l:%M%p %Z on %b %d, %Y')} {end_time.strftime('%l:%M%p %Z on %b %d, %Y')}")
 
     while time.time() < end_time:
         # Call normal endpoint 90% of the time and anomlous 10% of the time 
@@ -99,7 +99,15 @@ def generate_normal_window_logs():
 
 # Generate anomalous window logs for 10 mins
 def generate_anomalous_window_logs():
-    print("=======================Generating anomalous logs ==================================")
+    print("=======================Generating anomalous logs ==================================") 
+    if random.random() < 0.5:
+        generate_more_errors()
+    else:
+        generate_lots_of_messages()
+
+
+def generate_more_errors():
+    print("=======================Generating logs with 90% error and 10% info ==================================")
 
     start_time = time.time()
     end_time = start_time + WINDOW_TIME  # 600 seconds = 10 minutes
@@ -116,8 +124,22 @@ def generate_anomalous_window_logs():
         call_card_service(endpoint)    
         time.sleep(1)
 
-    print("Finished executing anomalous window for 10 minutes.") 
+    print("Finished executing anomalous window for 10 minutes - 90% ERROR") 
 
+def generate_lots_of_messages():
+    # print("=======================Generating lots of INFO logs ==================================")
+
+    start_time = time.time()
+    end_time = start_time + WINDOW_TIME  # 600 seconds = 10 minutes
+    
+    print(f"Normal window: {start_time.strftime('%l:%M%p %Z on %b %d, %Y')} {end_time.strftime('%l:%M%p %Z on %b %d, %Y')}")
+
+    while time.time() < end_time:
+        # Call normal endpoint all the time 
+        endpoint = random.choice(endpoints_normal)
+        call_card_service(endpoint)    
+
+    print("Finished executing anomalous window for 10 minutes - 100% INFO")
 
 # Define the start time
 start_time = time.time()
