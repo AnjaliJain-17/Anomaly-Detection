@@ -22,12 +22,21 @@ mvn clean package
 cd target
 
 #Run the jar file for the Java application
-nohup java -jar ElkApplication-0.0.1-SNAPSHOT.jar &
+if pgrep -f ElkApplication &>/dev/null; then
+    pkill -f ElkApplication
+else
+    nohup java -jar ElkApplication-0.0.1-SNAPSHOT.jar &
+fi
 
 # wait for the spring app to start
 sleep 30s
 
 # Run the log generator script
 cd Anomaly-Detection/log-collector-application/log-generator/
-nohup python3 log_generation_smart.py &
+
+if pgrep -f log_generation_smart &>/dev/null; then
+    pkill -f log_generation_smart
+else
+    nohup python3 log_generation_smart.py &
+fi
 
