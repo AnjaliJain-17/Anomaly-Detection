@@ -8,7 +8,7 @@ from time import strftime, localtime
 
 
 # Base URL for the Card API
-url = "http://ec2-13-57-247-5.us-west-1.compute.amazonaws.com:8080"
+url = "localhost:8080"
 
 # Endpoint paths
 endpoints_normal = [ 
@@ -67,13 +67,13 @@ def call_card_service(endpoint):
 
 
     if method == "GET":
-        response = requests.get(full_url)
+        response = requests.get(full_url, timeout=20)
     elif method == "PUT":
-        response = requests.put(full_url, json=data)
+        response = requests.put(full_url, json=data, timeout=20)
     elif method == "POST":
-        response = requests.post(full_url, json=data)
+        response = requests.post(full_url, json=data, timeout=20)
     elif method == "DELETE":
-        response = requests.delete(full_url)
+        response = requests.delete(full_url, timeout=20)
 
     print(f"Request: {method} {full_url} - Response status code: {response.status_code}")
 
