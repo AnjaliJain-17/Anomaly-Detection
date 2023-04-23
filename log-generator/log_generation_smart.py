@@ -3,6 +3,8 @@ import time
 import random
 from faker import Faker
 import time
+from time import strftime, localtime
+
 
 
 # Base URL for the Card API
@@ -81,8 +83,8 @@ def generate_normal_window_logs():
 
     start_time = time.time()
     end_time = start_time + WINDOW_TIME  # 600 seconds = 10 minutes
-    
-    print(f"Normal window: {start_time.strftime('%l:%M%p %Z on %b %d, %Y')} {end_time.strftime('%l:%M%p %Z on %b %d, %Y')}")
+
+    print(f"Normal window: {strftime('%l:%M%p %Z on %b %d, %Y', localtime(start_time))} {strftime('%l:%M%p %Z on %b %d, %Y', localtime(end_time))}")
 
     while time.time() < end_time:
         # Call normal endpoint 90% of the time and anomlous 10% of the time 
@@ -132,7 +134,7 @@ def generate_lots_of_messages():
     start_time = time.time()
     end_time = start_time + WINDOW_TIME  # 600 seconds = 10 minutes
     
-    print(f"Normal window: {start_time.strftime('%l:%M%p %Z on %b %d, %Y')} {end_time.strftime('%l:%M%p %Z on %b %d, %Y')}")
+    print(f"Normal window: {strftime('%l:%M%p %Z on %b %d, %Y', localtime(start_time))} {strftime('%l:%M%p %Z on %b %d, %Y', localtime(end_time))}")
 
     while time.time() < end_time:
         # Call normal endpoint all the time 
