@@ -549,7 +549,7 @@ interval_row = df_grouped.loc[df_grouped['Date'].idxmax()]
 index_name = 'ml-results'
 
 kmeans_metrics['anomaly_score'] = interval_row['anomaly_kmeans_score']
-isolation_forest_metrics['anomaly_score'] = interval_row['anomaly_score_isof']
+iso_metrics['anomaly_score'] = interval_row['anomaly_score_isof']
 
 window_summary = {
     'start_time': df_grouped['Date'].max() - datetime.timedelta(minutes = 5),
