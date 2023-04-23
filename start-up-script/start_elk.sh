@@ -32,11 +32,12 @@ fi
 sleep 30s
 
 # Run the log generator script
+cd
 cd Anomaly-Detection/log-collector-application/log-generator/
 
 if pgrep -f log_generation_smart &>/dev/null; then
     pkill -f log_generation_smart
 else
-    nohup python3 log_generation_smart.py &
+    nohup python3 log_generation_smart.py > run.log &
 fi
 
