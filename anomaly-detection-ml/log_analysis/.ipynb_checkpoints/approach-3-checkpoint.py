@@ -109,7 +109,7 @@
     "\n",
     "from elasticsearch import Elasticsearch\n",
     "\n",
-    "AWS_HOSTNAME = 'localhost'\n",
+    "AWS_HOSTNAME = 'http://ec2-13-57-247-5.us-west-1.compute.amazonaws.com'\n",
     "ELASTIC_PORT = 9200\n",
     "\n",
     "es = Elasticsearch([\"{}:{}\".format(AWS_HOSTNAME, ELASTIC_PORT)],timeout=30)"

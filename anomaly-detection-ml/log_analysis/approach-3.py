@@ -79,14 +79,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "2023-04-19 21:32:21.970854 2023-04-20 21:32:21.970854\n"
+      "2023-04-22 01:56:03.741212 2023-04-23 01:56:03.741212\n"
      ]
     }
    ],
@@ -109,7 +109,7 @@
     "\n",
     "from elasticsearch import Elasticsearch\n",
     "\n",
-    "AWS_HOSTNAME = 'localhost'\n",
+    "AWS_HOSTNAME = 'http://ec2-13-57-247-5.us-west-1.compute.amazonaws.com'\n",
     "ELASTIC_PORT = 9200\n",
     "\n",
     "es = Elasticsearch([\"{}:{}\".format(AWS_HOSTNAME, ELASTIC_PORT)],timeout=30)"
