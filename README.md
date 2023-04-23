@@ -93,10 +93,12 @@ curl -X GET "localhost:9200/ml-results/_search?pretty" -H 'Content-Type: applica
     service cron status
      ```
 4.Configure the cron job in crontab file
+
       ``` 
       crontab -e 
       ```
 5. Add the below expression (runs job every 5 minutes) in the file
+
       ```
       cd ~ && cd Anomaly-Detection/anomaly-detection-ml/log_analysis && python3 approach-3.py >> output.log
       ```
