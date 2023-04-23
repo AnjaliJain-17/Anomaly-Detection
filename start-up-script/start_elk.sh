@@ -41,3 +41,5 @@ else
     nohup python3 -u log_generation_smart.py >> run.log &
 fi
 
+# start cron service
+sudo service cron start
