@@ -88,13 +88,24 @@ curl -X GET "localhost:9200/ml-results/_search?pretty" -H 'Content-Type: applica
       ```
       sudo service cron start
     ```
-3. Configure the cron job in crontab file
+3. Check the status of the cron daemon 
+    ```
+    service cron status
+     ```
+4.Configure the cron job in crontab file
       ``` 
       crontab -e 
       ```
-4. Add the expression in the file
+5. Add the below expression (runs job every 5 minutes) in the file
       ```
       */5 * * * * /Anomaly-Detection/anomaly-detection-ml/log_analysis/ml-jobrunner.sh
       ```
+6. To check if the cronjob is running or not :
+      ```
+      */5 * * * * /Anomaly-Detection/anomaly-detection-ml/log_analysis/ml-jobrunner.sh
+      ```
+
+    
+     
 
   
