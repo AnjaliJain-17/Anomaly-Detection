@@ -98,12 +98,9 @@ curl -X GET "localhost:9200/ml-results/_search?pretty" -H 'Content-Type: applica
       ```
 5. Add the below expression (runs job every 5 minutes) in the file
       ```
-      */5 * * * * /Anomaly-Detection/anomaly-detection-ml/log_analysis/ml-jobrunner.sh
+      cd ~ && cd Anomaly-Detection/anomaly-detection-ml/log_analysis && python3 approach-3.py >> output.log
       ```
-6. To check if the cronjob is running or not :
-      ```
-      */5 * * * * /Anomaly-Detection/anomaly-detection-ml/log_analysis/ml-jobrunner.sh
-      ```
+
 
     
      
