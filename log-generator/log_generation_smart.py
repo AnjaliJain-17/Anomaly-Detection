@@ -8,7 +8,7 @@ from time import strftime, localtime
 
 
 # Base URL for the Card API
-url = "localhost:8080"
+url = "http://localhost:8080"
 
 # Endpoint paths
 endpoints_normal = [ 
