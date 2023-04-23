@@ -1,0 +1,10 @@
+Executing cron job
+Executing cron job
+Executing cron job
+Executing cron job
+Executing cron job
+2023-04-22 03:41:01.334206 2023-04-23 03:41:01.334206
+Traceback (most recent call last):
+  File "/home/ubuntu/Anomaly-Detection/anomaly-detection-ml/log_analysis/approach-3.py", line 75, in <module>
+    from elasticsearch import Elasticsearch
+ModuleNotFoundError: No module named 'elasticsearch'
