@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Start Elasticsearch
-sudo systemctl start elasticsearch
+sudo systemctl restart elasticsearch
 
 # Start Logstash
-sudo systemctl start logstash
+sudo systemctl restart logstash
 
 # Start Kibana
-sudo systemctl start kibana
+sudo systemctl restart kibana
 
 #Go to home directory
 cd
