@@ -38,6 +38,6 @@ cd Anomaly-Detection/log-generator/
 if pgrep -f log_generation_smart &>/dev/null; then
     pkill -f log_generation_smart
 else
-    nohup python3 log_generation_smart.py > run.log &
+    nohup python3 -u log_generation_smart.py >> run.log &
 fi
 
