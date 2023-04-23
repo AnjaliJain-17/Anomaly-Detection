@@ -33,7 +33,7 @@ sleep 30s
 
 # Run the log generator script
 cd
-cd Anomaly-Detection/log-collector-application/log-generator/
+cd Anomaly-Detection/log-generator/
 
 if pgrep -f log_generation_smart &>/dev/null; then
     pkill -f log_generation_smart
