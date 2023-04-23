@@ -288,8 +288,8 @@ all_columns = list(df_grouped.columns)
 log_level_columns = all_columns[2:8]
 event_id_columns = all_columns[8:-1]
 
-sns.pairplot(df_grouped, y_vars= event_id_columns,
-                  x_vars= log_level_columns)
+# sns.pairplot(df_grouped, y_vars= event_id_columns,
+#                   x_vars= log_level_columns)
 
 
 # In[16]:
@@ -317,9 +317,9 @@ for i in cluster_check_range:
 
 # Finding the elbow point
 
-fig, ax = plt.subplots()
-ax.plot(cluster_check_range, scores[1:])
-plt.show()
+# fig, ax = plt.subplots()
+# ax.plot(cluster_check_range, scores[1:])
+# plt.show()
 
 
 # In[18]:
@@ -359,19 +359,19 @@ df_grouped
 
 tsne_cluster = df_grouped.groupby('cluster').agg({'tsne-x-axis':'mean', 'tsne-y-axis':'mean'}).reset_index()
 
-plt.figure(figsize=(16,10))
+# plt.figure(figsize=(16,10))
 
-sns.scatterplot(
-    x="tsne-x-axis", y="tsne-y-axis",
-    hue="cluster",
-    palette=sns.color_palette("hls", k),
-    data=df_grouped,
-    legend="full",
-    alpha=1
-)
+# sns.scatterplot(
+#     x="tsne-x-axis", y="tsne-y-axis",
+#     hue="cluster",
+#     palette=sns.color_palette("hls", k),
+#     data=df_grouped,
+#     legend="full",
+#     alpha=1
+# )
 
-plt.scatter(x="tsne-x-axis", y="tsne-y-axis", data=tsne_cluster, s=100, c='b')
-plt.show()
+# plt.scatter(x="tsne-x-axis", y="tsne-y-axis", data=tsne_cluster, s=100, c='b')
+# plt.show()
 
 
 # In[21]:
@@ -400,7 +400,7 @@ points = np.asarray(data_scaled)
 
 df_grouped['ssd'] = get_ssd(data_scaled, cluster_model, feature_cols)
 
-plt.hist(df_grouped['ssd'], bins=100)
+# plt.hist(df_grouped['ssd'], bins=100)
 
 
 # In[22]:
@@ -445,13 +445,13 @@ model.fit(data_scaled)
 df_grouped['anomaly_isolated'] = pd.Series(model.predict(data_scaled))
 df_grouped['anomaly_isolated'] = df_grouped['anomaly_isolated'].map( {1: 0, -1: 1} )
 
-sns.scatterplot(
-    x="tsne-x-axis", y="tsne-y-axis",
-    hue="anomaly_isolated",
-    data=df_grouped,
-    legend="full",
-    alpha=1
-)
+# sns.scatterplot(
+#     x="tsne-x-axis", y="tsne-y-axis",
+#     hue="anomaly_isolated",
+#     data=df_grouped,
+#     legend="full",
+#     alpha=1
+# )
 
 # decision_function will calculate score for each data point. 
 #In our context, based on contamination factor set negative values will represent likelihood of anamoly & positive value indicates normal values.
