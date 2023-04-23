@@ -74,7 +74,7 @@ print(start_time, end_time)
 
 from elasticsearch import Elasticsearch
 
-AWS_HOSTNAME = 'localhost'
+AWS_HOSTNAME = 'http://localhost'
 ELASTIC_PORT = 9200
 
 es = Elasticsearch(["{}:{}".format(AWS_HOSTNAME, ELASTIC_PORT)],timeout=30)
