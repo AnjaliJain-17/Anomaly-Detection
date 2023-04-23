@@ -101,7 +101,7 @@ def fetch_logs(start_time, end_time):
     hits = search_result['hits']['hits']    
     log_dir = "data/unstructured/Java/"
     log_file_path = os.path.join(log_dir, f"application.log")
-    with open(log_file_path, 'a') as log_file:
+    with open(log_file_path, 'w') as log_file:
         for hit in hits:
             log_file.write(f"{hit['_source']['message']}\n")
     return log_file_path
