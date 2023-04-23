@@ -81,3 +81,20 @@ curl -X GET "localhost:9200/ml-results/_search?pretty" -H 'Content-Type: applica
     }
 }'
 ```
+
+## Steps to setup ML cron job
+1. Log in to your ec2 instance & install crond service
+2. Start the cron service 
+      ```
+      sudo service cron start
+    ```
+3. Configure the cron job in crontab file
+      ``` 
+      crontab -e 
+      ```
+4. Add the expression in the file
+      ```
+      */5 * * * * /Anomaly-Detection/anomaly-detection-ml/log_analysis/ml-jobrunner.sh
+      ```
+
+  
