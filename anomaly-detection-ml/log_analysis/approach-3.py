@@ -101,7 +101,7 @@ def fetch_logs(start_time, end_time):
     hits = search_result['hits']['hits']    
     log_dir = "data/unstructured/Java/"
     log_file_path = os.path.join(log_dir, f"application.log")
-    with open(log_file_path, 'w') as log_file:
+    with open(log_file_path, 'a') as log_file:
         for hit in hits:
             log_file.write(f"{hit['_source']['message']}\n")
     return log_file_path
@@ -347,7 +347,7 @@ df
 
 
 # Applying tSNE to visualise data in 2D
-
+'''
 from sklearn.manifold import TSNE
 
 tsne = TSNE(n_components=2, verbose=1, perplexity=40, n_iter=300, random_state=RANDOM_STATE)
@@ -358,7 +358,7 @@ df_grouped['tsne-y-axis'] = tsne_results[:,1]
 df_grouped
 
 tsne_cluster = df_grouped.groupby('cluster').agg({'tsne-x-axis':'mean', 'tsne-y-axis':'mean'}).reset_index()
-
+'''
 # plt.figure(figsize=(16,10))
 
 # sns.scatterplot(
@@ -413,13 +413,13 @@ df_grouped['anomaly_kmeans'] = (df_grouped['ssd'] >= cutoff).astype(int)
 # score is calculated between 0 and 1, where score nearer to 1 will indicate an anomaly. This data will be rendenered on kibana.
 df_grouped['anomaly_kmeans_score'] = (df_grouped['ssd'] - cutoff) / cutoff
 
-sns.scatterplot(
-    x="tsne-x-axis", y="tsne-y-axis",
-    hue="anomaly_kmeans",
-    data=df_grouped,
-    legend="full",
-    alpha=1
-)
+#sns.scatterplot(
+#    x="tsne-x-axis", y="tsne-y-axis",
+#    hue="anomaly_kmeans",
+#    data=df_grouped,
+#    legend="full",
+#    alpha=1
+#)
 
 
 # In[23]:
@@ -563,4 +563,4 @@ window_summary = {
 print(window_summary)
 
 es.index(index=index_name, document=window_summary)
-
+quit()
