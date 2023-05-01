@@ -101,7 +101,6 @@ def fetch_logs(start_time, end_time):
     }
     search_result = es.search(index='spring-elk-logs', body=search_body)
     hits = search_result['hits']['hits']    
-    print(hits)
     log_dir = "data/unstructured/Java/"
     log_file_path = os.path.join(log_dir, f"application.log")
     with open(log_file_path, 'w') as log_file:
