@@ -367,14 +367,14 @@ df
 
 # Applying tSNE to visualise data in 2D
 
-from sklearn.manifold import TSNE
-
-tsne = TSNE(n_components=2, verbose=1, perplexity=40, n_iter=300, random_state=RANDOM_STATE)
-tsne_results = tsne.fit_transform(data_scaled)
-
-df_grouped['tsne-x-axis'] = tsne_results[:,0]
-df_grouped['tsne-y-axis'] = tsne_results[:,1]
-df_grouped
+#from sklearn.manifold import TSNE
+#
+#tsne = TSNE(n_components=2, verbose=1, perplexity=40, n_iter=300, random_state=RANDOM_STATE)
+#tsne_results = tsne.fit_transform(data_scaled)
+#
+#df_grouped['tsne-x-axis'] = tsne_results[:,0]
+#df_grouped['tsne-y-axis'] = tsne_results[:,1]
+#df_grouped
 
 #tsne_cluster = df_grouped.groupby('cluster').agg({'tsne-x-axis':'mean', 'tsne-y-axis':'mean'}).reset_index()
 #
