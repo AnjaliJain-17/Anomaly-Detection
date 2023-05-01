@@ -74,10 +74,10 @@ print(start_time, end_time)
 
 from elasticsearch import Elasticsearch
 
-AWS_HOSTNAME = 'http://localhost'
+AWS_HOSTNAME = 'http://ec2-54-193-2-165.us-west-1.compute.amazonaws.com'
 ELASTIC_PORT = 9200
 
-es = Elasticsearch(["{}:{}".format(AWS_HOSTNAME, ELASTIC_PORT)],timeout=30)
+es = Elasticsearch(["{}:{}".format(AWS_HOSTNAME, ELASTIC_PORT)],timeout=100)
 
 
 # In[4]:
@@ -95,10 +95,13 @@ def fetch_logs(start_time, end_time):
                     "lte": end_time
                 }
             }
-        }
+        },
+        "size": 10000
+
     }
     search_result = es.search(index='spring-elk-logs', body=search_body)
     hits = search_result['hits']['hits']    
+    print(hits)
     log_dir = "data/unstructured/Java/"
     log_file_path = os.path.join(log_dir, f"application.log")
     with open(log_file_path, 'w') as log_file:
@@ -288,8 +291,8 @@ all_columns = list(df_grouped.columns)
 log_level_columns = all_columns[2:8]
 event_id_columns = all_columns[8:-1]
 
-# sns.pairplot(df_grouped, y_vars= event_id_columns,
-                #   x_vars= log_level_columns)
+#sns.pairplot(df_grouped, y_vars= event_id_columns,
+#                  x_vars= log_level_columns)
 
 
 # In[16]:
@@ -305,24 +308,41 @@ cluster_check_range = range(1, 15)
 
 kmeans = [None] * (len(cluster_check_range) + 1)
 scores = [0] * (len(cluster_check_range) + 1)
-for i in cluster_check_range:
-    if i == 0:
-        continue
-    kmeans[i] = KMeans(n_clusters=i, random_state=RANDOM_STATE).fit(data_scaled) 
-    scores[i] = kmeans[i].score(data_scaled)
+kmeans[2] = KMeans(n_clusters=2, random_state=RANDOM_STATE).fit(data_scaled) 
+scores[2] = kmeans[2].score(data_scaled)
 
 
 # In[17]:
 
 
-# Finding the elbow point
+# # Applying Kmeans clustering to different values of k (1-15)
 
-# fig, ax = plt.subplots()
-# ax.plot(cluster_check_range, scores[1:])
-# plt.show()
+# import matplotlib.pyplot as plt
+# from sklearn.cluster import KMeans
+# RANDOM_STATE = 123
+
+# cluster_check_range = range(1, 15)
+
+# kmeans = [None] * (len(cluster_check_range) + 1)
+# scores = [0] * (len(cluster_check_range) + 1)
+# for i in cluster_check_range:
+#     if i == 0:
+#         continue
+#     kmeans[i] = KMeans(n_clusters=i, random_state=RANDOM_STATE).fit(data_scaled) 
+#     scores[i] = kmeans[i].score(data_scaled)
 
 
 # In[18]:
+
+
+# Finding the elbow point
+
+#fig, ax = plt.subplots()
+#ax.plot(cluster_check_range, scores[1:])
+#plt.show()
+
+
+# In[19]:
 
 
 # Selecting appropriate k. Here we chose k = 8
@@ -336,14 +356,14 @@ df = df_grouped['cluster'].value_counts().rename_axis('Cluster number').reset_in
 df
 
 
-# In[19]:
+# In[20]:
 
 
 # final_data - df_grouped
 # data_new - data_scaled
 
 
-# In[20]:
+# In[21]:
 
 
 # Applying tSNE to visualise data in 2D
@@ -357,24 +377,24 @@ df_grouped['tsne-x-axis'] = tsne_results[:,0]
 df_grouped['tsne-y-axis'] = tsne_results[:,1]
 df_grouped
 
-# tsne_cluster = df_grouped.groupby('cluster').agg({'tsne-x-axis':'mean', 'tsne-y-axis':'mean'}).reset_index()
+#tsne_cluster = df_grouped.groupby('cluster').agg({'tsne-x-axis':'mean', 'tsne-y-axis':'mean'}).reset_index()
+#
+#plt.figure(figsize=(16,10))
+#
+#sns.scatterplot(
+#    x="tsne-x-axis", y="tsne-y-axis",
+#    hue="cluster",
+#    palette=sns.color_palette("hls", k),
+#    data=df_grouped,
+#    legend="full",
+#    alpha=1
+#)
 
-# plt.figure(figsize=(16,10))
-
-# sns.scatterplot(
-#     x="tsne-x-axis", y="tsne-y-axis",
-#     hue="cluster",
-#     palette=sns.color_palette("hls", k),
-#     data=df_grouped,
-#     legend="full",
-#     alpha=1
-# )
-
-# plt.scatter(x="tsne-x-axis", y="tsne-y-axis", data=tsne_cluster, s=100, c='b')
-# plt.show()
+#plt.scatter(x="tsne-x-axis", y="tsne-y-axis", data=tsne_cluster, s=100, c='b')
+#plt.show()
 
 
-# In[21]:
+# In[22]:
 
 
 # Plotting histogram of sum_squared_distances of all points from the center of clusters
@@ -403,7 +423,7 @@ df_grouped['ssd'] = get_ssd(data_scaled, cluster_model, feature_cols)
 plt.hist(df_grouped['ssd'], bins=100)
 
 
-# In[22]:
+# In[23]:
 
 
 # Setting cutoff to ssd for anomaly
@@ -413,16 +433,16 @@ df_grouped['anomaly_kmeans'] = (df_grouped['ssd'] >= cutoff).astype(int)
 # score is calculated between 0 and 1, where score nearer to 1 will indicate an anomaly. This data will be rendenered on kibana.
 df_grouped['anomaly_kmeans_score'] = (df_grouped['ssd'] - cutoff) / cutoff
 
-# sns.scatterplot(
-#     x="tsne-x-axis", y="tsne-y-axis",
-#     hue="anomaly_kmeans",
-#     data=df_grouped,
-#     legend="full",
-#     alpha=1
-# )
+#sns.scatterplot(
+#    x="tsne-x-axis", y="tsne-y-axis",
+#    hue="anomaly_kmeans",
+#    data=df_grouped,
+#    legend="full",
+#    alpha=1
+#)
 
 
-# In[23]:
+# In[24]:
 
 
 # Listing anomalous rows according to k-means
@@ -430,7 +450,7 @@ df_grouped['anomaly_kmeans_score'] = (df_grouped['ssd'] - cutoff) / cutoff
 df_grouped.loc[df_grouped['anomaly_kmeans']==1]
 
 
-# In[24]:
+# In[25]:
 
 
 # Clustering using Isolation forest algorithm
@@ -445,13 +465,13 @@ model.fit(data_scaled)
 df_grouped['anomaly_isolated'] = pd.Series(model.predict(data_scaled))
 df_grouped['anomaly_isolated'] = df_grouped['anomaly_isolated'].map( {1: 0, -1: 1} )
 
-# sns.scatterplot(
-#     x="tsne-x-axis", y="tsne-y-axis",
-#     hue="anomaly_isolated",
-#     data=df_grouped,
-#     legend="full",
-#     alpha=1
-# )
+#sns.scatterplot(
+#    x="tsne-x-axis", y="tsne-y-axis",
+#    hue="anomaly_isolated",
+#    data=df_grouped,
+#    legend="full",
+#    alpha=1
+#)
 
 # decision_function will calculate score for each data point. 
 #In our context, based on contamination factor set negative values will represent likelihood of anamoly & positive value indicates normal values.
@@ -460,7 +480,7 @@ df_grouped['anomaly_score_isof'] = model.decision_function(data_scaled)
 df_grouped.loc[df_grouped['anomaly_isolated']==1]
 
 
-# In[25]:
+# In[37]:
 
 
 import matplotlib.pyplot as plt
@@ -468,12 +488,16 @@ import numpy as np
 from sklearn.metrics import f1_score, accuracy_score, confusion_matrix,ConfusionMatrixDisplay, recall_score
 
 def calculate_metrics(y_true, y_pred):
-    cf = confusion_matrix(y_true, y_pred)
+    cf = confusion_matrix(y_true, y_pred,labels=[0, 1])
     sensitivity = cf[0,0]/(cf[:,0].sum())
-    specificity = cf[1,1]/(cf[:,1].sum())
+    specificity = cf[1,1]/(cf[:,1].sum()) 
     f1 = f1_score(y_true, y_pred)
     acc = accuracy_score(y_true, y_pred)
     recall = recall_score(y_true, y_pred, average='binary')
+    if np.isnan(specificity):
+        specificity = 0
+    if np.isnan(sensitivity):
+        sensitivity = 0
     return {'f1_score': f1, 'accuracy': acc, 'sensitivity': sensitivity, 'specificity': specificity, 'recall': recall}
 
 anomaly_manual = df_grouped['anomaly_manual']
@@ -495,7 +519,7 @@ metrics_df = pd.concat([kmeans_df, iso_df], axis=1)
 print(metrics_df)
 
 
-# In[26]:
+# In[38]:
 
 
 def plot_metric_comparison(kmeans_metrics, iso_metrics):
@@ -509,10 +533,10 @@ def plot_metric_comparison(kmeans_metrics, iso_metrics):
     plt.show()
 
 
-plot_metric_comparison(kmeans_metrics, iso_metrics)
+#plot_metric_comparison(kmeans_metrics, iso_metrics)
 
 
-# In[27]:
+# In[39]:
 
 
 def plot_confusion_matrices(models, true_labels):
@@ -520,11 +544,12 @@ def plot_confusion_matrices(models, true_labels):
     fig, axes = plt.subplots(1, n_models, figsize=(5 * n_models, 5), sharey='row')
     
     for i, (model_name, y_pred) in enumerate(models.items()):
-        cm = confusion_matrix(true_labels, y_pred)
+        cm = confusion_matrix(true_labels, y_pred,labels=[0, 1])
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Negative', 'Positive'])
         disp.plot(ax=axes[i])
         disp.im_.colorbar.remove()
         disp.ax_.set_title(f"Confusion Matrix for {model_name}")
+      
         
     plt.subplots_adjust(wspace=0.6, hspace=0.01)
    
@@ -536,10 +561,10 @@ models = {
 }
 
 true_labels = df_grouped['anomaly_manual']
-plot_confusion_matrices(models, true_labels)
+#plot_confusion_matrices(models, true_labels)
 
 
-# In[28]:
+# In[40]:
 
 
 # Saving window results of ML run
